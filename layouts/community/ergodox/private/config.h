@@ -1,0 +1,10 @@
+#ifndef CONFIG_USER_H
+#define CONFIG_USER_H
+
+#include QMK_KEYBOARD_CONFIG_H
+
+#define ALLOW_SHIFTED_MOD_TAP
+#undef TAPPING_TERM
+#define TAPPING_TERM    150
+
+#endif
