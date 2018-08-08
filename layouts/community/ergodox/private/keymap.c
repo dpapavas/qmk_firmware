@@ -8,7 +8,7 @@
 #define CAPS_SFT MT(MOD_LSFT, KC_CAPS)
 #define QUOT_SFT MT(MOD_RSFT, KC_QUOT)
 #define DOWN_ALT MT(MOD_RALT, KC_DOWN)
-#define EQL_ALT MT(MOD_RALT, KC_EQL)
+#define EQL_CTL MT(MOD_RCTL, KC_EQL)
 #define ESC_FN LT(FN1, KC_ESC)
 #define GRV_FN LT(FN1, KC_GRV)
 #define RBRC_FN LT(FN1, KC_RBRC)
@@ -16,14 +16,14 @@
 #define DOWN_GUI MT(MOD_RGUI, KC_DOWN)
 #define HOME_GUI MT(MOD_LGUI, KC_HOME)
 #define RGHT_GUI MT(MOD_RGUI, KC_RIGHT)
-#define LBRC_ALT MT(MOD_LALT, KC_LBRC)
 #define LEFT_ALT MT(MOD_LALT, KC_LEFT)
-#define LPRN_CTL MT(MOD_LCTL, LSFT(KC_9))
-#define MINS_ALT MT(MOD_LALT, KC_MINS)
-#define RBRC_ALT MT(MOD_RALT, KC_RBRC)
+#define LBRC_CTL MT(MOD_LCTL, KC_LBRC)
+#define MINS_CTL MT(MOD_LCTL, KC_MINS)
 #define RGHT_SFT MT(MOD_LSFT, KC_RGHT)
-#define RPRN_CTL MT(MOD_RCTL, RSFT(KC_0))
+#define RBRC_CTL MT(MOD_RCTL, KC_RBRC)
 #define UP_SFT MT(MOD_RSFT, KC_UP)
+#define DEL_ALT MT(MOD_LALT, KC_DEL)
+#define ENT_ALT MT(MOD_RALT, KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -32,53 +32,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   Fn   |   1  |   2  |   3  |   4  |   5  | `/FN |           |Esc/FN|   6  |   7  |   8  |   9  |   0  |   Fn   |
  * |--------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
  * |  Tab   |   Q  |   W  |   E  |   R  |   T  | LALT |           | RALT |   Y  |   U  |   I  |   O  |   P  |   \    |
- * |--------+------+------+------+------+------|  [   |           |  ]   |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Caps/Sft|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | '/Shift|
  * |--------+------+------+------+------+------| LCTL |           | RCTL |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |  (   |           |  )   |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |  [   |           |  ]   |   N  |   M  |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |LCtrl | SysRq|  Ins |   [  | -/Alt|                                       | =/Alt| ]/Fn | Del  | Pause| RCtrl|
+ *   |LCtrl | SysRq|  Ins |   [  | -/Ctl|                                       | =/Ctl| ]/Fn | Del  | Pause| RCtrl|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |Home/G|  End |       | Left |Rght/G|
  *                                 ,------|------+------|       |------+------+------.
  *                                 |      |      | PgUp |       |  Up  |      |      |
- *                                 |BSpace|  Del |------|       |------| Enter| Space|
- *                                 |      |      |PD/Gui|       |Dn/Gui|      |      |
+ *                                 |BSpace| Del/ |------|       |------|Enter/| Space|
+ *                                 |      | LAlt |PD/Gui|       |Dn/Gui| RAlt |      |
  *                                 `--------------------'       `--------------------'
  */
 
     [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // Left hand
         TT(FN1),  KC_1,      KC_2,      KC_3,     KC_4,     KC_5,    GRV_FN,
-        KC_TAB,   KC_Q,      KC_W,      KC_E,     KC_R,     KC_T,    LBRC_ALT,
+        KC_TAB,   KC_Q,      KC_W,      KC_E,     KC_R,     KC_T,    KC_LALT,
         CAPS_SFT, KC_A,      KC_S,      KC_D,     KC_F,     KC_G,
-        KC_LSFT,  KC_Z,      KC_X,      KC_C,     KC_V,     KC_B,    LPRN_CTL,
-        KC_LCTL,  KC_SYSREQ, KC_INS,    KC_LBRC,  MINS_ALT,
+        KC_LSFT,  KC_Z,      KC_X,      KC_C,     KC_V,     KC_B,    LBRC_CTL,
+        KC_LCTL,  KC_SYSREQ, KC_INS,    KC_LBRC,  MINS_CTL,
         HOME_GUI, KC_END,
         KC_PGUP,
-        KC_BSPC,  KC_DEL,    PGDN_GUI,
+        KC_BSPC,  DEL_ALT,    PGDN_GUI,
 
         // Right hand
         ESC_FN,   KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    TT(FN1),
-        RBRC_ALT, KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_BSLS,
+        KC_RALT,  KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_BSLS,
                   KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN, QUOT_SFT,
-        RPRN_CTL, KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH, KC_RSFT,
-        EQL_ALT,  RBRC_FN,  KC_DEL,   KC_PAUSE, KC_RCTL,
+        RBRC_CTL, KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH, KC_RSFT,
+        EQL_CTL,  RBRC_FN,  KC_DEL,   KC_PAUSE, KC_RCTL,
         KC_LEFT,  RGHT_GUI,
         KC_UP,
-        DOWN_GUI, KC_ENT, KC_SPC),
+        DOWN_GUI, ENT_ALT, KC_SPC),
 
 /* Keymap 1: Fn Keys, media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |        |
  * |--------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |        |      |      | MsUp |      |      |      |           |      |      |      |  Up  |      |      |   F11  |
+ * |        |      |      | MsUp |      |      |      |           |      |      |      |      |      |      |   F11  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      | Left | Down | Rght |      |   F12  |
+ * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      |      |      |  Up  |      |   F12  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | LClk | MClk | RClk |      |      |           |      |      |      |      |      |      |        |
+ * |        |      | LClk | MClk | RClk |      |      |           |      |      |      | Left | Down | Rght |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
