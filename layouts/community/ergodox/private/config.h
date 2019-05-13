@@ -3,8 +3,7 @@
 
 #include QMK_KEYBOARD_CONFIG_H
 
-#define ALLOW_SHIFTED_MOD_TAP
 #undef TAPPING_TERM
-#define TAPPING_TERM    150
+#define TAPPING_TERM    175
 
 #endif
